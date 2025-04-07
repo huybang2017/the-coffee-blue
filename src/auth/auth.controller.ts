@@ -12,6 +12,18 @@ export class AuthController {
     return this.authService.login(user);
   }
 
+  @Post('register')
+  async register(
+    @Body() body: { email: string; password: string; name: string },
+  ) {
+    return this.authService.register(body);
+  }
+
+  @Post('refresh')
+  async refresh(@Body() body: { refresh_token: string }) {
+    return this.authService.refreshToken(body.refresh_token);
+  }
+
   @Post('profile')
   @UseGuards(JwtAuthGuard)
   getProfile(@Request() req: any) {
