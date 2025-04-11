@@ -3,10 +3,11 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from '@nestjs/jwt';
 import { RolesModule } from './roles/roles.module';
+import { LoggerMiddleware } from 'src/utils/middleware/logger.middleware';
 
 @Module({
   imports: [
@@ -44,4 +45,8 @@ import { RolesModule } from './roles/roles.module';
   providers: [AppService],
   exports: [JwtModule],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}
