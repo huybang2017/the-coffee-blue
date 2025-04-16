@@ -8,6 +8,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from '@nestjs/jwt';
 import { RolesModule } from './roles/roles.module';
 import { LoggerMiddleware } from 'src/utils/middleware/logger.middleware';
+import { ProductsModule } from './products/products.module';
+import { SuppliersModule } from './suppliers/suppliers.module';
+import { PaymentsModule } from './payments/payments.module';
+import { OrdersModule } from './orders/orders.module';
+import { OrderItemsModule } from './order_items/order_items.module';
+import { CategoriesModule } from './categories/categories.module';
+import { SupplierProductsModule } from './supplier_products/supplier_products.module';
 
 @Module({
   imports: [
@@ -40,6 +47,13 @@ import { LoggerMiddleware } from 'src/utils/middleware/logger.middleware';
     UsersModule,
     AuthModule,
     RolesModule,
+    ProductsModule,
+    SuppliersModule,
+    SupplierProductsModule,
+    CategoriesModule,
+    OrderItemsModule,
+    OrdersModule,
+    PaymentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
