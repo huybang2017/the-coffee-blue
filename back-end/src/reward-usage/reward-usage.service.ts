@@ -1,10 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RewardUsage } from './entities/reward-usage.entity';
 import { CreateRewardUsageDto } from './dto/create-reward-usage.dto';
 import { UpdateRewardUsageDto } from './dto/update-reward-usage.dto';
 import { User } from 'src/users/entities/user.entity';
+import { Injectable, NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class RewardUsagesService {
@@ -24,7 +24,7 @@ export class RewardUsagesService {
       ...dto,
       user,
     });
-    return this.rewardUsageRepo.save(usage);
+    return await this.rewardUsageRepo.save(usage);
   }
 
   findAll(): Promise<RewardUsage[]> {
