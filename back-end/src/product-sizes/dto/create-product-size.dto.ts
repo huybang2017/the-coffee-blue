@@ -12,7 +12,4 @@ export class CreateProductSizeDto {
   @IsNumber()
   @IsPositive()
   price: number;
-
-  @IsNumber()
-  quantity: number;
 }

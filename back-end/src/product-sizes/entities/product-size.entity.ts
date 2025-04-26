@@ -6,6 +6,7 @@ import {
   ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
 } from 'typeorm';
 
 export enum DrinkSize {
@@ -20,6 +21,7 @@ export class ProductSize {
   id: number;
 
   @ManyToOne(() => Product, (product) => product.sizes, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'product_id' })
   product: Product;
 
   @Column({
@@ -30,9 +32,6 @@ export class ProductSize {
 
   @Column('decimal', { precision: 10, scale: 2 })
   price: number;
-
-  @Column({ type: 'int', default: 0 })
-  quantity: number;
 
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;
