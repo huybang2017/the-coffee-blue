@@ -11,6 +11,7 @@ import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { LoginResponse } from './interfaces/login-response.interface';
 import { ProfileResponse } from './interfaces/profile-response.interface';
 import { compareSync, hash } from 'bcryptjs';
+import { plainToClass } from 'class-transformer';
 
 @Injectable()
 export class AuthService {
@@ -30,8 +31,7 @@ export class AuthService {
       if (!user) {
         throw new UnauthorizedException('User not found');
       }
-
-      return user;
+      return plainToClass(ProfileResponse, user);
     } catch (error) {
       throw new UnauthorizedException(error.message || 'Invalid token');
     }
@@ -67,7 +67,7 @@ export class AuthService {
       password: hashedPassword,
     });
 
-    return user;
+    return plainToClass(ProfileResponse, user);
   }
 
   async refreshToken(
