@@ -4,6 +4,7 @@ import {
   IsEnum,
   IsOptional,
   IsNotEmpty,
+  IsPositive,
 } from 'class-validator';
 import { ProductStatus } from '../entities/product.entity';
 
@@ -19,6 +20,10 @@ export class CreateProductDto {
   @IsNumber()
   @IsNotEmpty()
   price: number;
+
+  @IsNumber()
+  @IsPositive()
+  quantity: number;
 
   @IsOptional()
   @IsNumber()

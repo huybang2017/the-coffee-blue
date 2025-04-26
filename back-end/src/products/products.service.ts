@@ -23,6 +23,7 @@ export class ProductsService {
       name: product.name,
       description: product.description,
       price: product.price,
+      quantity: product.quantity,
       categoryId: product.category ? product.category.id : null,
       image: product.image,
       product_sizes: product.sizes ?? [],

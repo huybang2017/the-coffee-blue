@@ -36,6 +36,9 @@ export class Product {
   @Column({ type: 'varchar' })
   image: string;
 
+  @Column({ type: 'int' })
+  quantity: number;
+
   @ManyToOne(() => Category, (category) => category.products, {
     nullable: true,
   })

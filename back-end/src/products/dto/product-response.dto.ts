@@ -8,6 +8,7 @@ export class ProductResponseDto {
   price: number;
   categoryId?: number;
   image: string;
+  quantity: number;
   product_sizes?: ProductSize[];
   status: ProductStatus;
   createdAt: Date;
