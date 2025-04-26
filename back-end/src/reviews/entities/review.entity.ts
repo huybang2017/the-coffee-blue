@@ -17,6 +17,7 @@ export class Review {
   id: number;
 
   @ManyToOne(() => User, (user) => user.reviews, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @OneToOne(() => Order, (order) => order.review, { onDelete: 'CASCADE' })

@@ -6,6 +6,7 @@ import {
   ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
 } from 'typeorm';
 
 export enum ReservationStatus {
@@ -20,6 +21,7 @@ export class Reservation {
   id: number;
 
   @ManyToOne(() => User, (user) => user.reservations, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @Column({ type: 'timestamp', comment: 'Thời gian đặt bàn' })
